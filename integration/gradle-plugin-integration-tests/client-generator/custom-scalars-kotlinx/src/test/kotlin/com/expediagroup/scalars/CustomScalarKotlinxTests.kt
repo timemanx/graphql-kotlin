@@ -35,7 +35,7 @@ class CustomScalarKotlinxTests {
         try {
             engine.start()
             runBlocking {
-                val port = engine.resolvedConnectors().first().port
+                val port = engine.engine.resolvedConnectors().first().port
                 val client = GraphQLKtorClient(url = URL("http://localhost:$port/graphql"))
 
                 val undefinedLocaleQuery = LocaleQuery(variables = LocaleQuery.Variables())
@@ -62,7 +62,7 @@ class CustomScalarKotlinxTests {
         try {
             engine.start()
             runBlocking {
-                val port = engine.resolvedConnectors().first().port
+                val port = engine.engine.resolvedConnectors().first().port
                 val client = GraphQLKtorClient(url = URL("http://localhost:$port/graphql"))
 
                 val undefinedWrapperQuery = OptionalScalarQuery(variables = OptionalScalarQuery.Variables())

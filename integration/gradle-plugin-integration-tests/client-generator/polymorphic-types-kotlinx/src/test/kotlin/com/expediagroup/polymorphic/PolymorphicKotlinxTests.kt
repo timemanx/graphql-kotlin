@@ -30,7 +30,7 @@ class PolymorphicKotlinxTests {
         try {
             engine.start()
             runBlocking {
-                val port = engine.resolvedConnectors().first().port
+                val port = engine.engine.resolvedConnectors().first().port
                 val client = GraphQLKtorClient(url = URL("http://localhost:$port/graphql"))
 
                 val query = CompletePolymorphicQuery(variables = CompletePolymorphicQuery.Variables(input = "foo"))
@@ -68,7 +68,7 @@ class PolymorphicKotlinxTests {
                         }
                     }
                 })
-                val port = engine.resolvedConnectors().first().port
+                val port = engine.engine.resolvedConnectors().first().port
                 val client = GraphQLKtorClient(url = URL("http://localhost:$port/graphql"), serializer = serializerWithFallback)
 
                 val fallbackQuery = PartialPolymorphicQuery(variables = PartialPolymorphicQuery.Variables(input = "bar"))
