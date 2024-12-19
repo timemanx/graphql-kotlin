@@ -22,7 +22,7 @@ class ApplicationTest {
         try {
             engine.start()
             runBlocking {
-                val port = engine.resolvedConnectors().first().port
+                val port = engine.engine.resolvedConnectors().first().port
                 val client = GraphQLKtorClient(url = URL("http://localhost:$port/graphql"))
 
                 val result = client.execute(TestQuery(variables = TestQuery.Variables(name = OptionalInput.Defined("junit"))))
